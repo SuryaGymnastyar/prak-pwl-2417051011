@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mata_kuliah', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('nama_mk', 100);
-            $table->integer('sks');
+        Schema::create('user', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
+            $table->string('nim');
+            $table->foreignId('kelas_id')->constrained();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mata_kuliah');
+        Schema::dropIfExists('user');
     }
 };
